@@ -109,7 +109,15 @@ export default function Root() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" style={{ padding: "1rem 0" }}>
+      <Box
+        component="main"
+        style={{
+          padding: "1rem 0",
+          height: "100%",
+          overflow: "hidden",
+          width: "100%",
+        }}
+      >
         <Outlet />
       </Box>
     </Box>

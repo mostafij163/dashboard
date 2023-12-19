@@ -1,11 +1,11 @@
 import { Grid } from "@mui/material";
+
 import { useAaplStockData, useGooglStockData } from "../api";
 import BarChart from "../components/charts/BarChart";
-import LineChart from "../components/charts/LIneChart";
 
 const labels = ["January", "February", "March", "April", "May"];
 
-export default function Dashboard() {
+export default function Bar() {
   const { data: appleData } = useAaplStockData();
   const { data: googleData } = useGooglStockData();
 
@@ -20,32 +20,10 @@ export default function Dashboard() {
     },
   ];
 
-  const openClosePriceDataset = [
-    {
-      label: "Apple Inc. Close Price",
-      data: appleData?.data?.results?.map((result) => result.c),
-    },
-    {
-      label: "Google Inc. Close Price",
-      data: googleData?.data?.results?.map((result) => result.c),
-    },
-    {
-      label: "Apple Inc. Open Price",
-      data: appleData?.data?.results?.map((result) => result.o),
-    },
-    {
-      label: "Google Inc. Open Price",
-      data: googleData?.data?.results?.map((result) => result.o),
-    },
-  ];
-
   return (
     <Grid container spacing={2} alignItems="center" justifyContent="center">
-      <Grid item sm={12} md={6}>
+      <Grid item lg={12}>
         <BarChart labels={labels} datasets={highestPriceDataset} />
-      </Grid>
-      <Grid item sm={12} md={6}>
-        <LineChart labels={labels} datasets={openClosePriceDataset} />
       </Grid>
     </Grid>
   );
