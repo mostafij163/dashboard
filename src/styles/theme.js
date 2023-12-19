@@ -24,7 +24,7 @@ const base = createTheme({
   },
 
   typography: {
-    fontFamily: "Quicksand, sans-serif",
+    fontFamily: "'Dosis', sans-serif",
     fontSize: 12,
     allVariants: {
       color: "#1A120B",

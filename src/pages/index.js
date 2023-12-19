@@ -10,11 +10,13 @@ import {
   ListItemIcon,
   ListItemText,
   styled,
+  Typography,
 } from "@mui/material";
 import {
   Dashboard as DashboardIcon,
   BarChart as BarChartIcon,
   ShowChart as ShowChartIcon,
+  Analytics as Logo,
 } from "@mui/icons-material";
 
 const drawerWidth = 240;
@@ -58,6 +60,16 @@ const SideMenuItem = styled(ListItem)(
 `
 );
 
+const SidebarLogo = styled(Link)(
+  ({ theme }) => `
+  text-decoration: none;
+  color: ${theme.palette.primary.main};
+  & .MuiTypography-root {
+    font-weight: 600
+  }
+`
+);
+
 export default function Root() {
   const location = useLocation();
 
@@ -76,10 +88,20 @@ export default function Root() {
         variant="permanent"
         anchor="left"
       >
-        <Toolbar />
-        <div>Logo</div>
-        <Divider />
-        <List>
+        <SidebarLogo to="/dashboard">
+          <Toolbar
+            sx={{ minHeight: "auto !important", padding: "1rem !important" }}
+          >
+            <Logo
+              sx={{
+                height: "3rem",
+                width: "3rem",
+              }}
+            />
+            <Typography variant="h5">Analytics</Typography>
+          </Toolbar>
+        </SidebarLogo>
+        <List sx={{ paddingTop: 0, paddingBottom: 0 }}>
           {sidemenus.map(({ title, path, Icon }) => (
             <SideMenuItem
               sx={
